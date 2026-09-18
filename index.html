@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MetLife — Sales + Service Centre C360 Transformation Extension</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; background: #f5f6fa; color: #1a1a2e; font-size: 14px; }
+  header { background: #1a1a2e; color: white; padding: 32px 40px; }
+  header h1 { font-size: 22px; font-weight: 700; letter-spacing: -0.3px; }
+  header p { margin-top: 6px; color: #8892b0; font-size: 13px; }
+  .badge { display: flex; align-items: center; gap: 8px; padding: 8px 16px; border-radius: 20px; font-size: 12px; font-weight: 600; }
+  .badge-removed { background: #fde8e8; color: #c0392b; }
+  .badge-replace { background: #fff3e0; color: #e65100; }
+  .badge-move { background: #e3f2fd; color: #1565c0; }
+  .badge-new { background: #e8f5e9; color: #2e7d32; }
+  .badge .dot { width: 8px; height: 8px; border-radius: 50%; background: currentColor; }
+  .container { padding: 28px 40px; display: flex; flex-direction: column; gap: 28px; }
+  .section { background: white; border-radius: 10px; overflow: hidden; box-shadow: 0 1px 4px rgba(0,0,0,.07); }
+  .section-header { background: #1a1a2e; color: white; padding: 12px 20px; font-size: 13px; font-weight: 700; letter-spacing: .5px; text-transform: uppercase; }
+  table { width: 100%; border-collapse: collapse; }
+  thead tr { background: #f0f2f8; }
+  thead th { padding: 10px 16px; text-align: left; font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: .6px; color: #6b7280; border-bottom: 2px solid #e8eaf0; }
+  tbody tr { border-bottom: 1px solid #f0f2f5; }
+  tbody tr:last-child { border-bottom: none; }
+  tbody tr:hover { background: #fafbff; }
+  td { padding: 11px 16px; vertical-align: top; line-height: 1.5; }
+  .role { font-weight: 600; color: #1a1a2e; }
+  .team-tag { display: inline-block; background: #eef0ff; color: #3730a3; font-size: 11px; font-weight: 600; padding: 2px 8px; border-radius: 10px; }
+  .pill { display: inline-flex; align-items: center; gap: 5px; font-size: 11px; font-weight: 600; padding: 3px 9px; border-radius: 12px; white-space: nowrap; margin-top: 4px; }
+  .pill-removed { background: #fde8e8; color: #c0392b; }
+  .pill-replace { background: #fff3e0; color: #e65100; }
+  .pill-new { background: #e8f5e9; color: #2e7d32; }
+  .pill-moved { background: #e3f2fd; color: #1565c0; }
+  .pill-refresh { background: #f3e8ff; color: #6b21a8; }
+  .names { color: #374151; }
+  .name-removed { text-decoration: line-through; color: #9ca3af; }
+  .name-added { color: #2e7d32; font-weight: 600; }
+  .name-replaced { color: #e65100; font-style: italic; }
+  .no-change { color: #6b7280; font-size: 13px; }
+  .change-note { margin-top: 4px; font-size: 12px; color: #6b7280; font-style: italic; }
+  .pivots-wrapper { padding: 28px 40px 0; }
+  .pivots-section { background: white; border-radius: 10px; overflow: hidden; box-shadow: 0 1px 4px rgba(0,0,0,.07); margin-bottom: 28px; }
+  .roster-badges { display: flex; flex-wrap: wrap; gap: 10px; padding: 10px 40px 0; }
+  .pivots-body { padding: 8px 0; }
+  .pivot-group { border-bottom: 1px solid #f0f2f5; }
+  .pivot-group:last-child { border-bottom: none; }
+  .pivot-group-header { display: flex; align-items: center; gap: 12px; padding: 14px 24px 10px; }
+  .pivot-num { width: 26px; height: 26px; border-radius: 50%; background: #0f3460; color: white; font-size: 12px; font-weight: 700; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+  .pivot-group-title { font-size: 13px; font-weight: 700; color: #1a1a2e; }
+  .pivot-items { padding: 0 24px 14px 62px; display: flex; flex-direction: column; gap: 10px; }
+  .pivot-item { display: flex; gap: 10px; }
+  .pivot-dot { width: 6px; height: 6px; border-radius: 50%; background: #0f3460; margin-top: 7px; flex-shrink: 0; }
+  .pivot-content { font-size: 13px; color: #374151; line-height: 1.6; }
+  .pivot-content strong { color: #1a1a2e; }
+  .pivot-ref { color: #9ca3af; font-size: 11px; }
+  .section-block { padding: 28px 40px 0; }
+  .section-marker { display: flex; align-items: center; gap: 14px; margin-bottom: 16px; }
+  .section-num { font-size: 10px; font-weight: 800; letter-spacing: 1.5px; text-transform: uppercase; color: white; background: #0f3460; padding: 4px 10px; border-radius: 4px; }
+  .section-title-label { font-size: 16px; font-weight: 700; color: #1a1a2e; }
+  .section-line { flex: 1; height: 2px; background: #e8eaf0; }
+  .pricing-card { background: white; border-radius: 10px; box-shadow: 0 1px 4px rgba(0,0,0,.07); overflow: hidden; }
+  .pricing-card-header { background: #0f3460; padding: 20px 28px; }
+  .pricing-card-header p { color: #8892b0; font-size: 12px; text-transform: uppercase; letter-spacing: .8px; font-weight: 600; margin-bottom: 4px; }
+  .pricing-card-header h3 { color: white; font-size: 13px; font-weight: 600; }
+  .pricing-stats { display: flex; }
+  .pricing-stat { flex: 1; padding: 28px 32px; border-right: 1px solid #f0f2f5; }
+  .pricing-stat:last-child { border-right: none; }
+  .pricing-stat-label { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: .7px; color: #9ca3af; margin-bottom: 8px; }
+  .pricing-stat-value { font-size: 32px; font-weight: 800; color: #1a1a2e; letter-spacing: -1px; line-height: 1; }
+  .pricing-stat-sub { font-size: 12px; color: #6b7280; margin-top: 6px; }
+</style>
+</head>
+<body>
+
+<header>
+  <h1>MetLife &#8212; Sales + Service Centre C360 Transformation Extension</h1>
+  <p>Salesforce Professional Services &middot; Proposal</p>
+</header>
+
+<div class="section-block">
+  <div class="section-marker">
+    <span class="section-num">Section 01</span>
+    <span class="section-title-label">Key Operational &amp; Process Pivots to Drive Velocity, Quality, and Value</span>
+    <div class="section-line"></div>
+  </div>
+</div>
+
+<div class="pivots-wrapper" style="padding-top:0;">
+  <div class="pivots-section">
+    <div class="pivots-body">
+      <div class="pivot-group">
+        <div class="pivot-group-header">
+          <div class="pivot-num">1</div>
+          <div class="pivot-group-title">Leadership, Staffing &amp; Hands-On Architecture</div>
+        </div>
+        <div class="pivot-items">
+          <div class="pivot-item"><div class="pivot-dot"></div><div class="pivot-content"><strong>Hands-On Functional &amp; Business Architecture:</strong> Position Functional and Business Architects as active platform builders who configure directly in the sandbox, enabling real-time decision-making and removing administrative pass-through layers <span class="pivot-ref">[12, 68]</span>.</div></div>
+          <div class="pivot-item"><div class="pivot-dot"></div><div class="pivot-content"><strong>Dedicated Workstream Leadership:</strong> Align dedicated Senior Solution Leads across all workstreams (Pierre Dufour for Sales, Maria for Book of Business, and Nathan Greer for Servicing) to provide steady architectural direction and empower hands-on delivery <span class="pivot-ref">[8, 12, 14]</span>.</div></div>
+          <div class="pivot-item"><div class="pivot-dot"></div><div class="pivot-content"><strong>Proactive Delivery Oversight:</strong> Introduce a Senior Manager (20 hpw) to streamline governance, accelerate blocker resolution, and optimize overall meeting cadences <span class="pivot-ref">[12, 66]</span>.</div></div>
+        </div>
+      </div>
+      <div class="pivot-group">
+        <div class="pivot-group-header">
+          <div class="pivot-num">2</div>
+          <div class="pivot-group-title">Delivery Process &amp; Ways of Working</div>
+        </div>
+        <div class="pivot-items">
+          <div class="pivot-item"><div class="pivot-dot"></div><div class="pivot-content"><strong>Collaborative AI Enablement for Speed:</strong> Partner directly with MetLife's AI technical staff to leverage enterprise AI tools (such as Claude and developer copilots) alongside Salesforce tools, driving immediate velocity in story drafting, rapid prototyping, and daily development <span class="pivot-ref">[3, 12, 68]</span>.</div></div>
+          <div class="pivot-item"><div class="pivot-dot"></div><div class="pivot-content"><strong>Prototype-First Experience Design:</strong> Focus design cycles on working sandbox configurations rather than static wireframes, driving early &#8220;shift-left&#8221; feedback from end-users during active sprints <span class="pivot-ref">[12, 66]</span>.</div></div>
+          <div class="pivot-item"><div class="pivot-dot"></div><div class="pivot-content"><strong>Agile Governance &amp; Forward Refinement:</strong> Ensure a disciplined weekly backlog refinement rhythm for upcoming Program Increments (PIs) backed by clear governance&#8212;ensuring delivery cadences are consistently followed and risks or blockers are proactively raised well ahead of release dates <span class="pivot-ref">[12, 70]</span>.</div></div>
+          <div class="pivot-item"><div class="pivot-dot"></div><div class="pivot-content"><strong>Single Source of Truth in Azure DevOps (ADO):</strong> Standardize on ADO as the central hub for all user stories, acceptance criteria, and QA defects to eliminate duplicate tracking and reduce reporting friction <span class="pivot-ref">[3, 12]</span>.</div></div>
+        </div>
+      </div>
+      <div class="pivot-group">
+        <div class="pivot-group-header">
+          <div class="pivot-num">3</div>
+          <div class="pivot-group-title">Global Execution &amp; Performance Accountability</div>
+        </div>
+        <div class="pivot-items">
+          <div class="pivot-item"><div class="pivot-dot"></div><div class="pivot-content"><strong>Geographic Time-Zone Alignment:</strong> Shift target development capacity to Nearshore (LATAM / Mexico) or Onshore to foster real-time, working-hour collaboration and eliminate daily handoff lag <span class="pivot-ref">[12, 70]</span>.</div></div>
+          <div class="pivot-item"><div class="pivot-dot"></div><div class="pivot-content"><strong>Data-Driven Program &amp; Individual Metrics:</strong> Partner on 30-day joint leadership reviews to monitor both program-level health and individual developer KPIs (tracking story points per sprint, defect leakage, and rework), supporting our shared goal of a 5% PI-over-PI velocity improvement <span class="pivot-ref">[12, 70]</span>.</div></div>
+          <div class="pivot-item"><div class="pivot-dot"></div><div class="pivot-content"><strong>Ensure Balanced QA Support:</strong> Calibrate QA-to-developer ratios to ensure comprehensive testing coverage across Salesforce, MetLife internal, and TCS delivery streams <span class="pivot-ref">[5, 12]</span>.</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="section-block">
+  <div class="section-marker">
+    <span class="section-num">Section 02</span>
+    <span class="section-title-label">Pricing</span>
+    <div class="section-line"></div>
+  </div>
+</div>
+<div class="container" style="padding-top:0;">
+  <div class="pricing-card">
+    <div class="pricing-card-header">
+      <p>MetLife &middot; C360 Transformation Extension</p>
+      <h3>Total Investment Summary</h3>
+    </div>
+    <div class="pricing-stats">
+      <div class="pricing-stat">
+        <div class="pricing-stat-label">Total Price</div>
+        <div class="pricing-stat-value">$10,683,431<span style="font-size:20px;font-weight:700;">.20</span></div>
+        <div class="pricing-stat-sub">USD &middot; Fixed engagement fee</div>
+      </div>
+      <div class="pricing-stat">
+        <div class="pricing-stat-label">Engagement Duration</div>
+        <div class="pricing-stat-value">12<span style="font-size:20px;font-weight:700;"> mo</span></div>
+        <div class="pricing-stat-sub">12-month program term</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="section-block">
+  <div class="section-marker">
+    <span class="section-num">Section 03</span>
+    <span class="section-title-label">Team Roster: Before &amp; After</span>
+    <div class="section-line"></div>
+  </div>
+</div>
+<div class="roster-badges">
+  <div class="badge badge-removed"><span class="dot"></span> 8 Positions Removed</div>
+  <div class="badge badge-replace"><span class="dot"></span> 4 SF Vendor Developers &#8594; Near/Onshore</div>
+  <div class="badge badge-move"><span class="dot"></span> 3 Role / Coverage Adjustments</div>
+  <div class="badge badge-new"><span class="dot"></span> 1 New Role Added</div>
+</div>
+
+<div class="container">
+  <div class="section">
+    <div class="section-header">1 &#8212; ART Leadership &amp; Support</div>
+    <table>
+      <thead><tr><th style="width:22%">Role</th><th style="width:38%">Before</th><th>After</th></tr></thead>
+      <tbody>
+        <tr><td class="role">ART Business Owner</td><td class="names">Andrea Douglas (RM, SM, SPC)<br>Tatum Sullivan (NA)<br>Jenny Rohren (Eligibility, Billing)</td><td><span class="no-change">No change</span></td></tr>
+        <tr><td class="role">Product Manager</td><td class="names">Dan Nestlehut</td><td><span class="no-change">No change</span></td></tr>
+        <tr><td class="role">Ops Readiness</td><td class="names">Joe Bawar</td><td><span class="no-change">No change</span></td></tr>
+        <tr><td class="role">Development Manager</td><td class="names">Dmitri Redcenco / Phil Baldwin</td><td><span class="no-change">No change</span></td></tr>
+        <tr><td class="role">Release Train Engineer</td><td class="names">Sue Murphy</td><td><span class="no-change">No change</span></td></tr>
+        <tr><td class="role">ML Systems Architects<br><span style="font-weight:400;color:#6b7280;font-size:12px">Across All Teams</span></td><td class="names">Rahul Sahay (Integrations), Koushik Saha (SFDC), Sanchari Bhattacharya (B2C), Pranav Dinakaran (B2B), Fang Wang (Data)</td><td><span class="no-change">No change</span></td></tr>
+        <tr><td class="role">SF Vendor Management<br><span style="font-weight:400;color:#6b7280;font-size:12px">Across All Teams</span></td><td class="names"><span class="name-removed">Amanda Wang (Project Controller)</span><br>Ben Wilkinson (Sr. PM)<br>Nitin Chandola (Tech Lead)<br>Diana Vazquez (Training Materials)</td><td><span class="names">Ben Wilkinson (Sr. PM &#8212; absorbs Amanda's scope)<br>Nitin Chandola (Tech Lead)</span><br><span class="name-added">+ New Delivery Leader (SSA, 50%)</span><br><div class="change-note">Amanda Wang removed; new SSA role added</div></td></tr>
+        <tr><td class="role">Shared Services<br><span style="font-weight:400;color:#6b7280;font-size:12px">Across All Teams</span></td><td class="names">Mahes Thiruchelvaraj (Offshore Build PM)<br><span class="name-removed">Nitin Puri (QA Lead)</span></td><td><span class="names">Anubhav Baiswar (Offshore Build PM)<br>Melody (QA Lead)</span><br><div class="change-note">Mahes replaced by Anubhav; Nitin Puri removed &#8212; Melody takes over</div></td></tr>
+        <tr><td class="role">DevSecOps / Release Mgmt</td><td class="names">Kumar D K Ashok</td><td><span class="no-change">No change</span></td></tr>
+        <tr><td class="role">Service Providers</td><td class="names">Brian Tinsley (Salesforce), Sushma Anaparthi (Bizflow), Bhasker Patlolla (GSP), TBD (Prod Support Mgr)</td><td><span class="no-change">No change</span></td></tr>
+        <tr><td class="role">Agile Coaches</td><td class="names">Sridhar Balakrishnan</td><td><span class="no-change">No change</span></td></tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="section">
+    <div class="section-header">2 &#8212; Team Leadership</div>
+    <table>
+      <thead><tr><th style="width:22%">Role</th><th style="width:18%">Team</th><th style="width:30%">Before</th><th>After</th></tr></thead>
+      <tbody>
+        <tr><td class="role">PMAs &amp; Product Owners</td><td><span class="no-change">All teams</span></td><td class="names">All incumbents retained</td><td><span class="no-change">No change</span></td></tr>
+        <tr><td class="role">Scrum Leader</td><td><span class="team-tag">Book of Business</span></td><td class="names"><span class="name-removed">Anubhav Baiswar</span></td><td><span style="color:#9ca3af;font-style:italic">Vacant / TBD</span><br><div class="change-note">Anubhav moved to Shared Services as Offshore Build PM</div></td></tr>
+        <tr><td class="role">Scrum Leader</td><td><span class="team-tag">Sales 360</span></td><td class="names">Sachin Shah</td><td><span class="no-change">No change</span></td></tr>
+        <tr><td class="role">Scrum Leader</td><td><span class="team-tag">Service</span></td><td class="names">Molly Anneman</td><td><span class="no-change">No change</span></td></tr>
+        <tr><td class="role">Scrum Leader</td><td><span class="team-tag">Sales F4</span></td><td class="names">Meghan Reed</td><td><span class="no-change">No change</span></td></tr>
+        <tr><td class="role">Scrum Leader</td><td><span class="team-tag">Workflow BAU</span></td><td class="names">Padma Chikkala</td><td><span class="no-change">No change</span></td></tr>
+        <tr><td class="role">Scrum Leader</td><td><span class="team-tag">Feature Testing</span></td><td class="names">Kavitha Peddi</td><td><span class="no-change">No change</span></td></tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="section">
+    <div class="section-header">3 &#8212; Solution &amp; Design</div>
+    <table>
+      <thead><tr><th style="width:22%">Role</th><th style="width:18%">Team</th><th style="width:30%">Before</th><th>After</th></tr></thead>
+      <tbody>
+        <tr><td class="role">Solution Lead &amp; Sr. SA</td><td><span class="no-change">All teams</span></td><td class="names">Maria Hernandez Mendoza (BoB), Pierre DuFour (Sales 360), Nathan Greer (Service)</td><td><span class="no-change">No change &#8212; all kept</span></td></tr>
+        <tr><td class="role">Offshore Tech Architect</td><td><span class="no-change">All workstreams</span></td><td class="names">Meenal Retharekar (BoB &amp; Sales 360)<br><span class="name-removed">Hemangini Vashishtha (Service)</span></td><td><span class="names">Meenal Retharekar (all 3 workstreams)</span><br><div class="change-note">Meenal now covers Service; Hemangini removed</div></td></tr>
+        <tr><td class="role">Technical Lead</td><td><span class="team-tag">Book of Business</span></td><td class="names"><span class="name-removed">Sai Sadrup Reddy Gangula</span></td><td><span class="name-added">TBD &#8212; RR to be placed</span><br><div class="change-note">Refresh STA; put RR in now</div></td></tr>
+        <tr><td class="role">Technical Lead</td><td><span class="team-tag">Sales 360</span></td><td class="names">Srinivas Medicherla</td><td><span class="no-change">No change</span></td></tr>
+        <tr><td class="role">Technical Lead</td><td><span class="team-tag">Service</span></td><td class="names">Prasad Alavilli</td><td><span class="no-change">No change</span></td></tr>
+        <tr><td class="role">Functional Design / BA</td><td><span class="team-tag">Book of Business</span></td><td class="names">Robin Morris, <span class="name-removed">Upasana Dass</span></td><td><span class="names">Robin Morris</span><br><div class="change-note">Upasana Dass removed</div></td></tr>
+        <tr><td class="role">Functional Design / BA</td><td><span class="team-tag">Sales 360</span></td><td class="names">Lyle Marecheau</td><td><span class="no-change">No change</span></td></tr>
+        <tr><td class="role">Functional Design / BA</td><td><span class="team-tag">Service</span></td><td class="names">Prabha Ramaswamy Shanthamani, <span class="name-removed">Misael Ramirez</span></td><td><span class="names">Prabha Ramaswamy Shanthamani</span><br><div class="change-note">Misael Ramirez removed</div></td></tr>
+        <tr><td class="role">UX Designer</td><td><span class="team-tag">Book of Business</span></td><td class="names"><span class="name-removed">Brandon Wilson</span></td><td><span style="color:#c0392b;font-weight:600">Removed</span></td></tr>
+        <tr><td class="role">UX Designer</td><td><span class="team-tag">Sales 360</span></td><td class="names">Varun Mehra</td><td><span class="no-change">No change</span></td></tr>
+        <tr><td class="role">UX Designer</td><td><span class="team-tag">Service</span></td><td class="names"><span class="name-removed">Matthew Huggins</span></td><td><span style="color:#c0392b;font-weight:600">Removed</span></td></tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="section">
+    <div class="section-header">4 &#8212; Developers</div>
+    <table>
+      <thead><tr><th style="width:22%">Role</th><th style="width:18%">Team</th><th style="width:30%">Before</th><th>After</th></tr></thead>
+      <tbody>
+        <tr style="background:#fffbf0;"><td class="role">SF Vendor Developer<br><span style="font-weight:400;font-size:11px;color:#e65100">&#8594; Replace w/ Near/Onshore</span></td><td><span class="team-tag">Book of Business</span></td><td class="names"><span class="name-replaced">Nitin Dwivedi</span><br>Gaurav Singh<br><span class="name-replaced">Tarushi Goyal</span><br>Han Aung</td><td><span class="names">Gaurav Singh &#10003;<br>Han Aung &#10003;</span><br><span class="name-added">+ 2 near/onshore replacements</span><br><div class="change-note">Nitin Dwivedi &#8594; replace; Tarushi Goyal &#8594; replace (RR in)</div></td></tr>
+        <tr style="background:#fffbf0;"><td class="role">SF Vendor Developer<br><span style="font-weight:400;font-size:11px;color:#e65100">&#8594; Replace w/ Near/Onshore</span></td><td><span class="team-tag">Sales 360</span></td><td class="names">Kapil Shirodkar<br><span class="name-replaced">Pallavi Tyagi</span><br>Rupesh Patil</td><td><span class="names">Kapil Shirodkar &#10003;<br>Rupesh Patil &#10003;</span><br><span class="name-added">+ 1 near/onshore replacement</span><br><div class="change-note">Pallavi Tyagi &#8594; replace</div></td></tr>
+        <tr style="background:#fffbf0;"><td class="role">SF Vendor Developer<br><span style="font-weight:400;font-size:11px;color:#e65100">&#8594; Replace w/ Near/Onshore</span></td><td><span class="team-tag">Service</span></td><td class="names"><span class="name-replaced">Alok Singh</span><br>Shubham Tunkikar<br>Subhendu Verma<br>Lenny Sterle</td><td><span class="names">Shubham Tunkikar &#10003;<br>Subhendu Verma &#10003;<br>Lenny Sterle &#10003;</span><br><span class="name-added">+ 1 near/onshore replacement</span><br><div class="change-note">Alok Singh &#8594; replace</div></td></tr>
+        <tr><td class="role">ML FTE Developer</td><td><span class="team-tag">Book of Business</span></td><td class="names">Nisil Patel</td><td><span class="no-change">No change</span></td></tr>
+        <tr><td class="role">TCS Offshore Developers</td><td><span class="no-change">All teams</span></td><td class="names">Arijit Paul, Rohini Chavva, Ravikiran Parise (BoB) &middot; Lakshmipriya Kukkala, Ansh Bhargava, Nidhi Biswas (Sales 360) &middot; Sumoy Karmi, Diksha Raj, Kamil Kamran, Ashok Manchikanti Reddy, Ravi Verma, Rina Thakare (Service) &middot; Sravanthi Mummadi, Shyamal Mahajan, Dharmendra Oswal, Iqra Akhtar, Jayashree Ghosh (Sales F4 / BAU)</td><td><span class="no-change">No change</span></td></tr>
+        <tr><td class="role">GOSC Developers</td><td><span class="team-tag">Book of Business</span></td><td class="names">Syed Safian (DnA), Himanshu Verma (Java)</td><td><span class="no-change">No change</span></td></tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="section">
+    <div class="section-header">5 &#8212; QA / Testing &#8212; No Removals</div>
+    <table>
+      <thead><tr><th style="width:22%">Role</th><th style="width:18%">Team</th><th>People</th></tr></thead>
+      <tbody>
+        <tr><td class="role">SF Vendor Testers</td><td><span class="team-tag">Book of Business</span></td><td class="names">Vinod Kumar Dakkumalla, Marquese Martin-Hayes, Smitali Das</td></tr>
+        <tr><td class="role">SF Vendor Testers</td><td><span class="team-tag">Sales 360</span></td><td class="names">Ranjitha Ravikumar, Ashu Gupta, Melodie Piercey</td></tr>
+        <tr><td class="role">SF Vendor Testers</td><td><span class="team-tag">Service</span></td><td class="names">Lavni Agarwal, Vinay K P, Rahul Jiyani</td></tr>
+        <tr><td class="role">Feature Test Leads</td><td><span class="no-change">Cross-Team</span></td><td class="names">Karl Benyoussef, Jason Ambrose, Shikha, Vikas Bains, James Swartwood, Jasmine Velazquez</td></tr>
+        <tr><td class="role">ML / TCS Testers</td><td><span class="no-change">Cross-Team</span></td><td class="names">Anand Sharma, Totapuri Mohanta, Eliza Afroj (360 &amp; BAU), Balaji Kale (50%), Divya Gnk</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="section">
+    <div class="section-header">6 &#8212; Production Support &#8212; No Changes</div>
+    <table>
+      <thead><tr><th style="width:22%">Role</th><th style="width:30%">Before</th><th>After</th></tr></thead>
+      <tbody>
+        <tr><td class="role">Prod Support Tech Lead<br><span style="font-weight:400;color:#6b7280;font-size:12px">SF Vendor</span></td><td class="names">Aaron Mitchell (covers all teams)</td><td><span class="no-change">No change</span></td></tr>
+        <tr><td class="role">Prod Incident Triage<br><span style="font-weight:400;color:#6b7280;font-size:12px">Business FTE</span></td><td class="names">Michael Masiello, Daniel Heaton</td><td><span class="no-change">No change</span></td></tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+</body>
+</html>
