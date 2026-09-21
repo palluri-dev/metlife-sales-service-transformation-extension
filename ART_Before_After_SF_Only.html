@@ -1,2 +1,473 @@
-PCFET0NUWVBFIGh0bWw+CjxodG1sIGxhbmc9ImVuIj4KPGhlYWQ+CjxtZXRhIGNoYXJzZXQ9IlVURi04Ij4KPG1ldGEgbmFtZT0idmlld3BvcnQiIGNvbnRlbnQ9IndpZHRoPWRldmljZS13aWR0aCwgaW5pdGlhbC1zY2FsZT0xLjAiPgo8dGl0bGU+TWV0TGlmZSDigJQgU2FsZXMgKyBTZXJ2aWNlIENlbnRyZSBDMzYwIFRyYW5zZm9ybWF0aW9uIEV4dGVuc2lvbjwvdGl0bGU+CjxzdHlsZT4KICAqIHsgYm94LXNpemluZzogYm9yZGVyLWJveDsgbWFyZ2luOiAwOyBwYWRkaW5nOiAwOyB9CiAgYm9keSB7IGZvbnQtZmFtaWx5OiAtYXBwbGUtc3lzdGVtLCBCbGlua01hY1N5c3RlbUZvbnQsICdTZWdvZSBVSScsIHNhbnMtc2VyaWY7IGJhY2tncm91bmQ6ICNmNWY2ZmE7IGNvbG9yOiAjMWExYTJlOyBmb250LXNpemU6IDE0cHg7IH0KICBoZWFkZXIgeyBiYWNrZ3JvdW5kOiAjMWExYTJlOyBjb2xvcjogd2hpdGU7IHBhZGRpbmc6IDMycHggNDBweDsgfQogIGhlYWRlciBoMSB7IGZvbnQtc2l6ZTogMjJweDsgZm9udC13ZWlnaHQ6IDcwMDsgbGV0dGVyLXNwYWNpbmc6IC0wLjNweDsgfQogIGhlYWRlciBwIHsgbWFyZ2luLXRvcDogNnB4OyBjb2xvcjogIzg4OTJiMDsgZm9udC1zaXplOiAxM3B4OyB9CiAgLmJhZGdlIHsgZGlzcGxheTogZmxleDsgYWxpZ24taXRlbXM6IGNlbnRlcjsgZ2FwOiA4cHg7IHBhZGRpbmc6IDhweCAxNnB4OyBib3JkZXItcmFkaXVzOiAyMHB4OyBmb250LXNpemU6IDEycHg7IGZvbnQtd2VpZ2h0OiA2MDA7IH0KICAuYmFkZ2UtcmVtb3ZlZCB7IGJhY2tncm91bmQ6ICNmZGU4ZTg7IGNvbG9yOiAjYzAzOTJiOyB9CiAgLmJhZGdlLXJlcGxhY2UgeyBiYWNrZ3JvdW5kOiAjZmZmM2UwOyBjb2xvcjogI2U2NTEwMDsgfQogIC5iYWRnZS1tb3ZlIHsgYmFja2dyb3VuZDogI2UzZjJmZDsgY29sb3I6ICMxNTY1YzA7IH0KICAuYmFkZ2UtbmV3IHsgYmFja2dyb3VuZDogI2U4ZjVlOTsgY29sb3I6ICMyZTdkMzI7IH0KICAuYmFkZ2UgLmRvdCB7IHdpZHRoOiA4cHg7IGhlaWdodDogOHB4OyBib3JkZXItcmFkaXVzOiA1MCU7IGJhY2tncm91bmQ6IGN1cnJlbnRDb2xvcjsgfQogIC5jb250YWluZXIgeyBwYWRkaW5nOiAyOHB4IDQwcHg7IGRpc3BsYXk6IGZsZXg7IGZsZXgtZGlyZWN0aW9uOiBjb2x1bW47IGdhcDogMjhweDsgfQogIC5zZWN0aW9uIHsgYmFja2dyb3VuZDogd2hpdGU7IGJvcmRlci1yYWRpdXM6IDEwcHg7IG92ZXJmbG93OiBoaWRkZW47IGJveC1zaGFkb3c6IDAgMXB4IDRweCByZ2JhKDAsMCwwLC4wNyk7IH0KICAuc2VjdGlvbi1oZWFkZXIgeyBiYWNrZ3JvdW5kOiAjMWExYTJlOyBjb2xvcjogd2hpdGU7IHBhZGRpbmc6IDEycHggMjBweDsgZm9udC1zaXplOiAxM3B4OyBmb250LXdlaWdodDogNzAwOyBsZXR0ZXItc3BhY2luZzogLjVweDsgdGV4dC10cmFuc2Zvcm06IHVwcGVyY2FzZTsgfQogIC5zZWN0aW9uLWhlYWRlci53cy1ib2IgeyBiYWNrZ3JvdW5kOiAjMGYzNDYwOyB9CiAgLnNlY3Rpb24taGVhZGVyLndzLXNhbGVzIHsgYmFja2dyb3VuZDogIzFlNGQ4YzsgfQogIC5zZWN0aW9uLWhlYWRlci53cy1zZXJ2aWNlIHsgYmFja2dyb3VuZDogIzJjNmI5ZTsgfQogIHRhYmxlIHsgd2lkdGg6IDEwMCU7IGJvcmRlci1jb2xsYXBzZTogY29sbGFwc2U7IH0KICB0aGVhZCB0ciB7IGJhY2tncm91bmQ6ICNmMGYyZjg7IH0KICB0aGVhZCB0aCB7IHBhZGRpbmc6IDEwcHggMTZweDsgdGV4dC1hbGlnbjogbGVmdDsgZm9udC1zaXplOiAxMXB4OyBmb250LXdlaWdodDogNzAwOyB0ZXh0LXRyYW5zZm9ybTogdXBwZXJjYXNlOyBsZXR0ZXItc3BhY2luZzogLjZweDsgY29sb3I6ICM2YjcyODA7IGJvcmRlci1ib3R0b206IDJweCBzb2xpZCAjZThlYWYwOyB9CiAgdGJvZHkgdHIgeyBib3JkZXItYm90dG9tOiAxcHggc29saWQgI2YwZjJmNTsgfQogIHRib2R5IHRyOmxhc3QtY2hpbGQgeyBib3JkZXItYm90dG9tOiBub25lOyB9CiAgdGJvZHkgdHI6aG92ZXIgeyBiYWNrZ3JvdW5kOiAjZmFmYmZmOyB9CiAgdGQgeyBwYWRkaW5nOiAxMXB4IDE2cHg7IHZlcnRpY2FsLWFsaWduOiB0b3A7IGxpbmUtaGVpZ2h0OiAxLjU7IH0KICAucm9sZSB7IGZvbnQtd2VpZ2h0OiA2MDA7IGNvbG9yOiAjMWExYTJlOyB9CiAgLm5hbWVzIHsgY29sb3I6ICMzNzQxNTE7IH0KICAubmFtZS1yZW1vdmVkIHsgdGV4dC1kZWNvcmF0aW9uOiBsaW5lLXRocm91Z2g7IGNvbG9yOiAjOWNhM2FmOyB9CiAgLm5hbWUtYWRkZWQgeyBjb2xvcjogIzJlN2QzMjsgZm9udC13ZWlnaHQ6IDYwMDsgfQogIC5uYW1lLXJlcGxhY2VkIHsgY29sb3I6ICNlNjUxMDA7IGZvbnQtc3R5bGU6IGl0YWxpYzsgfQogIC5uby1jaGFuZ2UgeyBjb2xvcjogIzZiNzI4MDsgZm9udC1zaXplOiAxM3B4OyB9CiAgLmNoYW5nZS1ub3RlIHsgbWFyZ2luLXRvcDogNHB4OyBmb250LXNpemU6IDEycHg7IGNvbG9yOiAjNmI3MjgwOyBmb250LXN0eWxlOiBpdGFsaWM7IH0KICAucGlsbCB7IGRpc3BsYXk6IGlubGluZS1mbGV4OyBhbGlnbi1pdGVtczogY2VudGVyOyBnYXA6IDVweDsgZm9udC1zaXplOiAxMXB4OyBmb250LXdlaWdodDogNjAwOyBwYWRkaW5nOiAzcHggOXB4OyBib3JkZXItcmFkaXVzOiAxMnB4OyB3aGl0ZS1zcGFjZTogbm93cmFwOyB9CiAgLnBpbGwtcmVtb3ZlZCB7IGJhY2tncm91bmQ6ICNmZGU4ZTg7IGNvbG9yOiAjYzAzOTJiOyB9CiAgLnBpbGwtcmVwbGFjZSB7IGJhY2tncm91bmQ6ICNmZmYzZTA7IGNvbG9yOiAjZTY1MTAwOyB9CiAgLnBpbGwtbmV3IHsgYmFja2dyb3VuZDogI2U4ZjVlOTsgY29sb3I6ICMyZTdkMzI7IH0KICAucGlsbC1yZWZyZXNoIHsgYmFja2dyb3VuZDogI2YzZThGZjsgY29sb3I6ICM2YjIxYTg7IH0KICAucGl2b3RzLXdyYXBwZXIgeyBwYWRkaW5nOiAyOHB4IDQwcHggMDsgfQogIC5waXZvdHMtc2VjdGlvbiB7IGJhY2tncm91bmQ6IHdoaXRlOyBib3JkZXItcmFkaXVzOiAxMHB4OyBvdmVyZmxvdzogaGlkZGVuOyBib3gtc2hhZG93OiAwIDFweCA0cHggcmdiYSgwLDAsMCwuMDcpOyBtYXJnaW4tYm90dG9tOiAyOHB4OyB9CiAgLnJvc3Rlci1iYWRnZXMgeyBkaXNwbGF5OiBmbGV4OyBmbGV4LXdyYXA6IHdyYXA7IGdhcDogMTBweDsgcGFkZGluZzogMTBweCA0MHB4IDA7IH0KICAucGl2b3RzLWJvZHkgeyBwYWRkaW5nOiA4cHggMDsgfQogIC5waXZvdC1ncm91cCB7IGJvcmRlci1ib3R0b206IDFweCBzb2xpZCAjZjBmMmY1OyB9CiAgLnBpdm90LWdyb3VwOmxhc3QtY2hpbGQgeyBib3JkZXItYm90dG9tOiBub25lOyB9CiAgLnBpdm90LWdyb3VwLWhlYWRlciB7IGRpc3BsYXk6IGZsZXg7IGFsaWduLWl0ZW1zOiBjZW50ZXI7IGdhcDogMTJweDsgcGFkZGluZzogMTRweCAyNHB4IDEwcHg7IH0KICAucGl2b3QtbnVtIHsgd2lkdGg6IDI2cHg7IGhlaWdodDogMjZweDsgYm9yZGVyLXJhZGl1czogNTAlOyBiYWNrZ3JvdW5kOiAjMGYzNDYwOyBjb2xvcjogd2hpdGU7IGZvbnQtc2l6ZTogMTJweDsgZm9udC13ZWlnaHQ6IDcwMDsgZGlzcGxheTogZmxleDsgYWxpZ24taXRlbXM6IGNlbnRlcjsganVzdGlmeS1jb250ZW50OiBjZW50ZXI7IGZsZXgtc2hyaW5rOiAwOyB9CiAgLnBpdm90LWdyb3VwLXRpdGxlIHsgZm9udC1zaXplOiAxM3B4OyBmb250LXdlaWdodDogNzAwOyBjb2xvcjogIzFhMWEyZTsgfQogIC5waXZvdC1pdGVtcyB7IHBhZGRpbmc6IDAgMjRweCAxNHB4IDYycHg7IGRpc3BsYXk6IGZsZXg7IGZsZXgtZGlyZWN0aW9uOiBjb2x1bW47IGdhcDogMTBweDsgfQogIC5waXZvdC1pdGVtIHsgZGlzcGxheTogZmxleDsgZ2FwOiAxMHB4OyB9CiAgLnBpdm90LWRvdCB7IHdpZHRoOiA2cHg7IGhlaWdodDogNnB4OyBib3JkZXItcmFkaXVzOiA1MCU7IGJhY2tncm91bmQ6ICMwZjM0NjA7IG1hcmdpbi10b3A6IDdweDsgZmxleC1zaHJpbms6IDA7IH0KICAucGl2b3QtY29udGVudCB7IGZvbnQtc2l6ZTogMTNweDsgY29sb3I6ICMzNzQxNTE7IGxpbmUtaGVpZ2h0OiAxLjY7IH0KICAucGl2b3QtY29udGVudCBzdHJvbmcgeyBjb2xvcjogIzFhMWEyZTsgfQogIC5zZWN0aW9uLWJsb2NrIHsgcGFkZGluZzogMjhweCA0MHB4IDA7IH0KICAuc2VjdGlvbi1tYXJrZXIgeyBkaXNwbGF5OiBmbGV4OyBhbGlnbi1pdGVtczogY2VudGVyOyBnYXA6IDE0cHg7IG1hcmdpbi1ib3R0b206IDE2cHg7IH0KICAuc2VjdGlvbi1udW0geyBmb250LXNpemU6IDEwcHg7IGZvbnQtd2VpZ2h0OiA4MDA7IGxldHRlci1zcGFjaW5nOiAxLjVweDsgdGV4dC10cmFuc2Zvcm06IHVwcGVyY2FzZTsgY29sb3I6IHdoaXRlOyBiYWNrZ3JvdW5kOiAjMGYzNDYwOyBwYWRkaW5nOiA0cHggMTBweDsgYm9yZGVyLXJhZGl1czogNHB4OyB9CiAgLnNlY3Rpb24tdGl0bGUtbGFiZWwgeyBmb250LXNpemU6IDE2cHg7IGZvbnQtd2VpZ2h0OiA3MDA7IGNvbG9yOiAjMWExYTJlOyB9CiAgLnNlY3Rpb24tbGluZSB7IGZsZXg6IDE7IGhlaWdodDogMnB4OyBiYWNrZ3JvdW5kOiAjZThlYWYwOyB9CiAgLnByaWNpbmctY2FyZCB7IGJhY2tncm91bmQ6IHdoaXRlOyBib3JkZXItcmFkaXVzOiAxMHB4OyBib3gtc2hhZG93OiAwIDFweCA0cHggcmdiYSgwLDAsMCwuMDcpOyBvdmVyZmxvdzogaGlkZGVuOyB9CiAgLnByaWNpbmctY2FyZC1oZWFkZXIgeyBiYWNrZ3JvdW5kOiAjMGYzNDYwOyBwYWRkaW5nOiAyMHB4IDI4cHg7IH0KICAucHJpY2luZy1jYXJkLWhlYWRlciBwIHsgY29sb3I6ICM4ODkyYjA7IGZvbnQtc2l6ZTogMTJweDsgdGV4dC10cmFuc2Zvcm06IHVwcGVyY2FzZTsgbGV0dGVyLXNwYWNpbmc6IC44cHg7IGZvbnQtd2VpZ2h0OiA2MDA7IG1hcmdpbi1ib3R0b206IDRweDsgfQogIC5wcmljGluZy1jYXJkLWhlYWRlciBoMyB7IGNvbG9yOiB3aGl0ZTsgZm9udC1zaXplOiAxM3B4OyBmb250LXdlaWdodDogNjAwOyB9CiAgLnByaWNpbmctc3RhdHMgeyBkaXNwbGF5OiBmbGV4OyB9CiAgLnByaWNpbmctc3RhdCB7IGZsZXg6IDE7IHBhZGRpbmc6IDI4cHggMzJweDsgYm9yZGVyLXJpZ2h0OiAxcHggc29saWQgI2YwZjJmNTsgfQogIC5wcmljGluZy1zdGF0Omxhc3QtY2hpbGQgeyBib3JkZXItcmlnaHQ6IG5vbmU7IH0KICAucHJpY2luZy1zdGF0LWxhYmVsIHsgZm9udC1zaXplOiAxMXB4OyBmb250LXdlaWdodDogNzAwOyB0ZXh0LXRyYW5zZm9ybTogdXBwZXJjYXNlOyBsZXR0ZXItc3BhY2luZzogLjdweDsgY29sb3I6ICM5Y2EzYWY7IG1hcmdpbi1ib3R0b206IDhweDsgfQogIC5wcmljGluZy1zdGF0LXZhbHVlIHsgZm9udC1zaXplOiAzMnB4OyBmb250LXdlaWdodDogODAwOyBjb2xvcjogIzFhMWEyZTsgbGV0dGVyLXNwYWNpbmc6IC0xcHg7IGxpbmUtaGVpZ2h0OiAxOyB9CiAgLnByaWNpbmctc3RhdC1zdWIgeyBmb250LXNpemU6IDEycHg7IGNvbG9yOiAjNmI3MjgwOyBtYXJnaW4tdG9wOiA2cHg7IH0KICAucm93LWdyb3VwLWRpdmlkZXIgdGQgeyBiYWNrZ3JvdW5kOiAjZjdmOGZjOyBwYWRkaW5nOiA2cHggMTZweDsgZm9udC1zaXplOiAxMXB4OyBmb250LXdlaWdodDogNzAwOyB0ZXh0LXRyYW5zZm9ybTogdXBwZXJjYXNlOyBsZXR0ZXItc3BhY2luZzogLjZweDsgY29sb3I6ICM5Y2EzYWY7IGJvcmRlci10b3A6IDJweCBzb2xpZCAjZThlYWYwOyB9Cjwvc3R5bGU+CjwvaGVhZD4KPGJvZHk+CgoKPGhlYWRlcj4KICA8aDE+TWV0TGlmZSAmIzgyMTI7IFNhbGVzICsgU2VydmljZSBDZW50cmUgQzM2MCBUcmFuc2Zvcm1hdGlvbiBFeHRlbnNpb248L2gxPgogIDxwPlNhbGVzZm9yY2UgUHJvZmVzc2lvbmFsIFNlcnZpY2VzICZtaWRkb3Q7IFByb3Bvc2FsPC9wPgo8L2hlYWRlcj4KCjwhLS0gU0VDVElPTiAwMSAtLT4KPGRpdiBjbGFzcz0ic2VjdGlvbi1ibG9jayI+CiAgPGRpdiBjbGFzcz0ic2VjdGlvbi1tYXJrZXIiPgogICAgPHNwYW4gY2xhc3M9InNlY3Rpb24tbnVtIj5TZWN0aW9uIDAxPC9zcGFuPgogICAgPHNwYW4gY2xhc3M9InNlY3Rpb24tdGl0bGUtbGFiZWwiPktleSBPcGVyYXRpb25hbCAmYW1wOyBQcm9jZXNzIFBpdm90cyB0byBEcml2ZSBWZWxvY2l0eSwgUXVhbGl0eSwgYW5kIFZhbHVlPC9zcGFuPgogICAgPGRpdiBjbGFzcz0ic2VjdGlvbi1saW5lIj48L2Rpdj4KICA8L2Rpdj4KPC9kaXY+CjxkaXYgY2xhc3M9InBpdm90cy13cmFwcGVyIiBzdHlsZT0icGFkZGluZy10b3A6MCI+CiAgPGRpdiBjbGFzcz0icGl2b3RzLXNlY3Rpb24iPgogICAgPGRpdiBjbGFzcz0icGl2b3RzLWJvZHkiPgogICAgICA8ZGl2IGNsYXNzPSJwaXZvdC1ncm91cCI+CiAgICAgICAgPGRpdiBjbGFzcz0icGl2b3QtZ3JvdXAtaGVhZGVyIj4KICAgICAgICAgIDxkaXYgY2xhc3M9InBpdm90LW51bSI+MTwvZGl2PgogICAgICAgICAgPGRpdiBjbGFzcz0icGl2b3QtZ3JvdXAtdGl0bGUiPkxlYWRlcnNoaXAsIFN0YWZmaW5nICZhbXA7IEhhbmRzLU9uIEFyY2hpdGVjdHVyZTwvZGl2PgogICAgICAgIDwvZGl2PgogICAgICAgIDxkaXYgY2xhc3M9InBpdm90LWl0ZW1zIj4KICAgICAgICAgIDxkaXYgY2xhc3M9InBpdm90LWl0ZW0iPjxkaXYgY2xhc3M9InBpdm90LWRvdCI+PC9kaXY+PGRpdiBjbGFzcz0icGl2b3QtY29udGVudCI+PHN0cm9uZz5IYW5kcy1PbiBGdW5jdGlvbmFsICZhbXA7IEJ1c2luZXNzIEFyY2hpdGVjdHVyZTo8L3N0cm9uZz4gUG9zaXRpb24gRnVuY3Rpb25hbCBhbmQgQnVzaW5lc3MgQXJjaGl0ZWN0cyBhcyBhY3RpdmUgcGxhdGZvcm0gYnVpbGRlcnMgd2hvIGNvbmZpZ3VyZSBkaXJlY3RseSBpbiB0aGUgc2FuZGJveCwgZW5hYmxpbmcgcmVhbC10aW1lIGRlY2lzaW9uLW1ha2luZyBhbmQgcmVtb3ZpbmcgYWRtaW5pc3RyYXRpdmUgcGFzcy10aHJvdWdoIGxheWVycy48L2Rpdj48L2Rpdj4KICAgICAgICAgIDxkaXYgY2xhc3M9InBpdm90LWl0ZW0iPjxkaXYgY2xhc3M9InBpdm90LWRvdCI+PC9kaXY+PGRpdiBjbGFzcz0icGl2b3QtY29udGVudCI+PHN0cm9uZz5EZWRpY2F0ZWQgV29ya3N0cmVhbSBMZWFkZXJzaGlwOjwvc3Ryb25nPiBBbGlnbiBkZWRpY2F0ZWQgU2VuaW9yIFNvbHV0aW9uIExlYWRzIGFjcm9zcyBhbGwgd29ya3N0cmVhbXMgKFBpZXJyZSBEdWZvdXIgZm9yIFNhbGVzLCBNYXJpYSBmb3IgQm9vayBvZiBCdXNpbmVzcywgYW5kIE5hdGhhbiBHcmVlciBmb3IgU2VydmljaW5nKSB0byBwcm92aWRlIHN0ZWFkeSBhcmNoaXRlY3R1cmFsIGRpcmVjdGlvbiBhbmQgZW1wb3dlciBoYW5kcy1vbiBkZWxpdmVyeS48L2Rpdj48L2Rpdj4KICAgICAgICAgIDxkaXYgY2xhc3M9InBpdm90LWl0ZW0iPjxkaXYgY2xhc3M9InBpdm90LWRvdCI+PC9kaXY+PGRpdiBjbGFzcz0icGl2b3QtY29udGVudCI+PHN0cm9uZz5Qcm9hY3RpdmUgRGVsaXZlcnkgT3ZlcnNpZ2h0Ojwvc3Ryb25nPiBJbnRyb2R1Y2UgYSBTZW5pb3IgTWFuYWdlciAoMjAgaHB3KSB0byBzdHJlYW1saW5lIGdvdmVybmFuY2UsIGFjY2VsZXJhdGUgYmxvY2tlciByZXNvbHV0aW9uLCBhbmQgb3B0aW1pemUgb3ZlcmFsbCBtZWV0aW5nIGNhZGVuY2VzLjwvZGl2PjwvZGl2PgogICAgICAgIDwvZGl2PgogICAgICA8L2Rpdj4KICAgICAgPGRpdiBjbGFzcz0icGl2b3QtZ3JvdXAiPgogICAgICAgIDxkaXYgY2xhc3M9InBpdm90LWdyb3VwLWhlYWRlciI+CiAgICAgICAgICA8ZGl2IGNsYXNzPSJwaXZvdC1udW0iPjI8L2Rpdj4KICAgICAgICAgIDxkaXYgY2xhc3M9InBpdm90LWdyb3VwLXRpdGxlIj5EZWxpdmVyeSBQcm9jZXNzICZhbXA7IFdheXMgb2YgV29ya2luZzwvZGl2PgogICAgICAgIDwvZGl2PgogICAgICAgIDxkaXYgY2xhc3M9InBpdm90LWl0ZW1zIj4KICAgICAgICAgIDxkaXYgY2xhc3M9InBpdm90LWl0ZW0iPjxkaXYgY2xhc3M9InBpdm90LWRvdCI+PC9kaXY+PGRpdiBjbGFzcz0icGl2b3QtY29udGVudCI+PHN0cm9uZz5Db2xsYWJvcmF0aXZlIEFJIEVuYWJsZW1lbnQgZm9yIFNwZWVkOjwvc3Ryb25nPiBQYXJ0bmVyIGRpcmVjdGx5IHdpdGggTWV0TGlmZSdzIEFJIHRlY2huaWNhbCBzdGFmZiB0byBsZXZlcmFnZSBlbnRlcnByaXNlIEFJIHRvb2xzIChzdWNoIGFzIENsYXVkZSBhbmQgZGV2ZWxvcGVyIGNvcGlsb3RzKSBhbG9uZ3NpZGUgU2FsZXNmb3JjZSB0b29scywgZHJpdmluZyBpbW1lZGlhdGUgdmVsb2NpdHkgaW4gc3RvcnkgZHJhZnRpbmcsIHJhcGlkIHByb3RvdHlwaW5nLCBhbmQgZGFpbHkgZGV2ZWxvcG1lbnQuPC9kaXY+PC9kaXY+CiAgICAgICAgICA8ZGl2IGNsYXNzPSJwaXZvdC1pdGVtIj48ZGl2IGNsYXNzPSJwaXZvdC1kb3QiPjwvZGl2PjxkaXYgY2xhc3M9InBpdm90LWNvbnRlbnQiPjxzdHJvbmc+UHJvdG90eXBlLUZpcnN0IEV4cGVyaWVuY2UgRGVzaWduOjwvc3Ryb25nPiBGb2N1cyBkZXNpZ24gY3ljbGVzIG9uIHdvcmtpbmcgc2FuZGJveCBjb25maWd1cmF0aW9ucyByYXRoZXIgdGhhbiBzdGF0aWMgd2lyZWZyYW1lcywgZHJpdmluZyBlYXJseSAmIzgyMjA7c2hpZnQtbGVmdCYjODIyMTsgZmVlZGJhY2sgZnJvbSBlbmQtdXNlcnMgZHVyaW5nIGFjdGl2ZSBzcHJpbnRzLjwvZGl2PjwvZGl2PgogICAgICAgICAgPGRpdiBjbGFzcz0icGl2b3QtaXRlbSI+PGRpdiBjbGFzcz0icGl2b3QtZG90Ij48L2Rpdj48ZGl2IGNsYXNzPSJwaXZvdC1jb250ZW50Ij48c3Ryb25nPkFnaWxlIEdvdmVybmFuY2UgJmFtcDsgRm9yd2FyZCBSZWZpbmVtZW50Ojwvc3Ryb25nPiBFbnN1cmUgYSBkaXNjaXBsaW5lZCB3ZWVrbHkgYmFja2xvZyByZWZpbmVtZW50IHJoeXRobSBmb3IgdXBjb21pbmcgUHJvZ3JhbSBJbmNyZW1lbnRzIChQSXMpIGJhY2tlZCBieSBjbGVhciBnb3Zlcm5hbmNlJiM4MjEyO2Vuc3VyaW5nIGRlbGl2ZXJ5IGNhZGVuY2VzIGFyZSBjb25zaXN0ZW50bHkgZm9sbG93ZWQgYW5kIHJpc2tzIG9yIGJsb2NrZXJzIGFyZSBwcm9hY3RpdmVseSByYWlzZWQgd2VsbCBhaGVhZCBvZiByZWxlYXNlIGRhdGVzLjwvZGl2PjwvZGl2PgogICAgICAgICAgPGRpdiBjbGFzcz0icGl2b3QtaXRlbSI+PGRpdiBjbGFzcz0icGl2b3QtZG90Ij48L2Rpdj48ZGl2IGNsYXNzPSJwaXZvdC1jb250ZW50Ij48c3Ryb25nPlNpbmdsZSBTb3VyY2Ugb2YgVHJ1dGggaW4gQXp1cmUgRGV2T3BzIChBRE8pOjwvc3Ryb25nPiBTdGFuZGFyZGl6ZSBvbiBBRE8gYXMgdGhlIGNlbnRyYWwgaHViIGZvciBhbGwgdXNlciBzdG9yaWVzLCBhY2NlcHRhbmNlIGNyaXRlcmlhLCBhbmQgUUEgZGVmZWN0cyB0byBlbGltaW5hdGUgZHVwbGljYXRlIHRyYWNraW5nIGFuZCByZWR1Y2UgcmVwb3J0aW5nIGZyaWN0aW9uLjwvZGl2PjwvZGl2PgogICAgICAgIDwvZGl2PgogICAgICA8L2Rpdj4KICAgICAgPGRpdiBjbGFzcz0icGl2b3QtZ3JvdXAiPgogICAgICAgIDxkaXYgY2xhc3M9InBpdm90LWdyb3VwLWhlYWRlciI+CiAgICAgICAgICA8ZGl2IGNsYXNzPSJwaXZvdC1udW0iPjM8L2Rpdj4KICAgICAgICAgIDxkaXYgY2xhc3M9InBpdm90LWdyb3VwLXRpdGxlIj5HbG9iYWwgRXhlY3V0aW9uICZhbXA7IFBlcmZvcm1hbmNlIEFjY291bnRhYmlsaXR5PC9kaXY+CiAgICAgICAgPC9kaXY+CiAgICAgICAgPGRpdiBjbGFzcz0icGl2b3QtaXRlbXMiPgogICAgICAgICAgPGRpdiBjbGFzcz0icGl2b3QtaXRlbSI+PGRpdiBjbGFzcz0icGl2b3QtZG90Ij48L2Rpdj48ZGl2IGNsYXNzPSJwaXZvdC1jb250ZW50Ij48c3Ryb25nPkdlb2dyYXBoaWMgVGltZS1ab25lIEFsaWdubWVudDo8L3N0cm9uZz4gU2hpZnQgdGFyZ2V0IGRldmVsb3BtZW50IGNhcGFjaXR5IHRvIE5lYXJzaG9yZSAoTEFUQU0gLyBNZXhpY28pIG9yIE9uc2hvcmUgdG8gZm9zdGVyIHJlYWwtdGltZSwgd29ya2luZy1ob3VyIGNvbGxhYm9yYXRpb24gYW5kIGVsaW1pbmF0ZSBkYWlseSBoYW5kb2ZmIGxhZy48L2Rpdj48L2Rpdj4KICAgICAgICAgIDxkaXYgY2xhc3M9InBpdm90LWl0ZW0iPjxkaXYgY2xhc3M9InBpdm90LWRvdCI+PC9kaXY+PGRpdiBjbGFzcz0icGl2b3QtY29udGVudCI+PHN0cm9uZz5EYXRhLURyaXZlbiBQcm9ncmFtICZhbXA7IEluZGl2aWR1YWwgTWV0cmljczo8L3N0cm9uZz4gUGFydG5lciBvbiAzMC1kYXkgam9pbnQgbGVhZGVyc2hpcCByZXZpZXdzIHRvIG1vbml0b3IgYm90aCBwcm9ncmFtLWxldmVsIGhlYWx0aCBhbmQgaW5kaXZpZHVhbCBkZXZlbG9wZXIgS1BJcyAodHJhY2tpbmcgc3RvcnkgcG9pbnRzIHBlciBzcHJpbnQsIGRlZmVjdCBsZWFrYWdlLCBhbmQgcmV3b3JrKSwgc3VwcG9ydGluZyBvdXIgc2hhcmVkIGdvYWwgb2YgYSA1JSBQSS1vdmVyLVBJIHZlbG9jaXR5IGltcHJvdmVtZW50LjwvZGl2PjwvZGl2PgogICAgICAgICAgPGRpdiBjbGFzcz0icGl2b3QtaXRlbSI+PGRpdiBjbGFzcz0icGl2b3QtZG90Ij48L2Rpdj48ZGl2IGNsYXNzPSJwaXZvdC1jb250ZW50Ij48c3Ryb25nPkVuc3VyZSBCYWxhbmNlZCBRQSBTdXBwb3J0Ojwvc3Ryb25nPiBDYWxpYnJhdGUgUUEtdG8tZGV2ZWxvcGVyIHJhdGlvcyB0byBlbnN1cmUgY29tcHJlaGVuc2l2ZSB0ZXN0aW5nIGNvdmVyYWdlIGFjcm9zcyBTYWxlc2ZvcmNlLCBNZXRMaWZlIGludGVybmFsLCBhbmQgVENTIGRlbGl2ZXJ5IHN0cmVhbXMuPC9kaXY+PC9kaXY+CiAgICAgICAgPC9kaXY+CiAgICAgIDwvZGl2PgogICAgPC9kaXY+CiAgPC9kaXY+CjwvZGl2PgoKPCEtLSBTRUNUSU9OIDAyIC0tPgo8ZGl2IGNsYXNzPSJzZWN0aW9uLWJsb2NrIj4KICA8ZGl2IGNsYXNzPSJzZWN0aW9uLW1hcmtlciI+CiAgICA8c3BhbiBjbGFzcz0ic2VjdGlvbi1udW0iPlNlY3Rpb24gMDI8L3NwYW4+CiAgICA8c3BhbiBjbGFzcz0ic2VjdGlvbi10aXRsZS1sYWJlbCI+UHJpY2luZzwvc3Bhbj4KICAgIDxkaXYgY2xhc3M9InNlY3Rpb24tbGluZSI+PC9kaXY+CiAgPC9kaXY+CjwvZGl2Pgo8ZGl2IGNsYXNzPSJjb250YWluZXIiIHN0eWxlPSJwYWRkaW5nLXRvcDowIj4KICA8ZGl2IGNsYXNzPSJwcmljGluZy1jYXJkIj4KICAgIDxkaXYgY2xhc3M9InByaWNpbmctY2FyZC1oZWFkZXIiPgogICAgICA8cD5NZXRMaWZlICZtaWRkb3Q7IEMzNjAgVHJhbnNmb3JtYXRpb24gRXh0ZW5zaW9uPC9wPgogICAgICA8aDM+VG90YWwgSW52ZXN0bWVudCBTdW1tYXJ5PC9oMz4KICAgIDwvZGl2PgogICAgPGRpdiBjbGFzcz0icHJpY2luZy1zdGF0cyI+CiAgICAgIDxkaXYgY2xhc3M9InByaWNpbmctc3RhdCI+CiAgICAgICAgPGRpdiBjbGFzcz0icHJpY2luZy1zdGF0LWxhYmVsIj5Ub3RhbCBQcmljZTwvZGl2PgogICAgICAgIDxkaXYgY2xhc3M9InByaWNpbmctc3RhdC12YWx1ZSI+JDEwLDU3Nyw2MTEuMjA8L2Rpdj4KICAgICAgICA8ZGl2IGNsYXNzPSJwcmljGluZy1zdGF0LXN1YiI+VVNEICZ
-middot7yBGaXhlZCBlbmdhZ2VtZW50IGZlZTwvZGl2PgogICAgICA8L2Rpdj4KICAgICAgPGRpdiBjbGFzcz0icHJpY2luZy1zdGF0Ij4KICAgICAgICA8ZGl2IGNsYXNzPSJwcmljGluZy1zdGF0LWxhYmVsIj5FbmdhZ2VtZW50IER1cmF0aW9uPC9kaXY+CiAgICAgICAgPGRpdiBjbGFzcz0icHJpY2luZy1zdGF0LXZhbHVlIj4xMiBtbzwvZGl2PgogICAgICAgIDxkaXYgY2xhc3M9InByaWNpbmctc3RhdC1zdWIiPjEyLW1vbnRoIHByb2dyYW0gdGVybTwvZGl2PgogICAgICA8L2Rpdj4KICAgIDwvZGl2PgogIDwvZGl2Pgo8L2Rpdj4KCjwhLS0gU0VDVElPTiAwMyAtLT4KPGRpdiBjbGFzcz0ic2VjdGlvbi1ibG9jayI+CiAgPGRpdiBjbGFzcz0ic2VjdGlvbi1tYXJrZXIiPgogICAgPHNwYW4gY2xhc3M9InNlY3Rpb24tbnVtIj5TZWN0aW9uIDAzPC9zcGFuPgogICAgPHNwYW4gY2xhc3M9InNlY3Rpb24tdGl0bGUtbGFiZWwiPlRlYW0gUm9zdGVyOiBCZWZvcmUgJmFtcDsgQWZ0ZXI8L3NwYW4+CiAgICA8ZGl2IGNsYXNzPSJzZWN0aW9uLWxpbmUiPjwvZGl2PgogIDwvZGl2Pgo8L2Rpdj4KPHAgc3R5bGU9InBhZGRpbmc6IDhweCA0MHB4IDA7IGZvbnQtc2l6ZTogMTJweDsgY29sb3I6ICM2YjcyODA7IGZvbnQtc3R5bGU6IGl0YWxpYzsiPlNhbGVzZm9yY2Ugcm9sZXMgb25seSAmbWlkZG90OyBTb3VyY2U6IEFSVCH0sJAs IDkv MjEuPC9wPgo8ZGl2IGNsYXNzPSJyb3N0ZXItYmFkZ2VzIj4KICA8ZGl2IGNsYXNzPSJiYWRnZSBiYWRnZS1yZW1vdmVkIj48c3BhbiBjbGFzcz0iZG90Ij48L3NwYW4+IDcgUG9zaXRpb25zIFJlbW92ZWQ8L2Rpdj4KICA8ZGl2IGNsYXNzPSJiYWRnZSBiYWRnZS1yZXBsYWNlIj48c3BhbiBjbGFzcz0iZG90Ij48L3NwYW4+IDQgU0YgVmVuZG9yIERldmVsb3BlcnMgJiM4NTk0OyBOZWFyL09uc2hvcmU8L2Rpdj4KICA8ZGl2IGNsYXNzPSJiYWRnZSBiYWRnZS1tb3ZlIj48c3BhbiBjbGFzcz0iZG90Ij48L3NwYW4+IDMgUm9sZSAvIENvdmVyYWdlIEFkanVzdG1lbnRzPC9kaXY+CiAgPGRpdiBjbGFzcz0iYmFkZ2UgYmFkZ2UtbmV3Ij48c3BhbiBjbGFzcz0iZG90Ij48L3NwYW4+IDEgTmV3IFJvbGUgQWRkZWQ8L2Rpdj4KPC9kaXY+Cgo8ZGl2IGNsYXNzPSJjb250YWluZXIiPgoKICA8IS0tIFRBQkxFIDE6IEFMTCBURUFNUyBTVVBQT1JUIC0tPgogIDxkaXYgY2xhc3M9InNlY3Rpb24iPgogICAgPGRpdiBjbGFzcz0ic2VjdGlvbi1oZWFkZXIiPkFsbCBUZWFtcyBTdXBwb3J0PC9kaXY+CiAgICA8dGFibGU+CiAgICAgIDx0aGVhZD4KICAgICAgICA8dHI+CiAgICAgICAgICA8dGggc3R5bGU9IndpZHRoOjMwJSI+Um9sZTwvdGg+CiAgICAgICAgICA8dGggc3R5bGU9IndpZHRoOjM0JSI+QmVmb3JlPC90aD4KICAgICAgICAgIDx0aD5BZnRlcjwvdGg+CiAgICAgICAgPC90cj4KICAgICAgPC90aGVhZD4KICAgICAgPHRib2R5PgogICAgICAgIDx0ciBjbGFzcz0icm93LWdyb3VwLWRpdmlkZXIiPjx0ZCBjb2xzcGFuPSIzIj5TRiBWZW5kb3IgTWFuYWdlbWVudCAmYW1wOyBTdXBwb3J0PC90ZD48L3RyPgogICAgICAgIDx0cj4KICAgICAgICAgIDx0ZCBjbGFzcz0icm9sZSI+UHJvamVjdCBDb250cm9sbGVyPC90ZD4KICAgICAgICAgIDx0ZCBjbGFzcz0ibmFtZXMiPjxzcGFuIGNsYXNzPSJuYW1lLXJlbW92ZWQiPkFtYW5kYSBXYW5nPC9zcGFuPjwvdGQ+CiAgICAgICAgICA8dGQ+PHNwYW4gY2xhc3M9InBpbGwgcGlsbC1yZW1vdmVkIj5SZW1vdmVkPC9zcGFuPjxkaXYgY2xhc3M9ImNoYW5nZS1ub3RlIj5TY29wZSBhYnNvcmJlZCBieSBCZW4gV2lsa2luc29uPC9kaXY+PC90ZD4KICAgICAgICA8L3RyPgogICAgICAgIDx0cj4KICAgICAgICAgIDx0ZCBjbGFzcz0icm9sZSI+U2VuaW9yIFByb2plY3QgTWFuYWdlcjwvdGQ+CiAgICAgICAgICA8dGQgY2xhc3M9Im5hbWVzIj5CZW4gV2lsa2luc29uPC90ZD4KICAgICAgICAgIDx0ZD48c3BhbiBjbGFzcz0ibm8tY2hhbmdlIj5ObyBjaGFuZ2U8L3NwYW4+PGRpdiBjbGFzcz0iY2hhbmdlLW5vdGUiPkFic29yYnMgQW1hbmRhJ3Mgc2NvcGU8L2Rpdj48L3RkPgogICAgICAgIDwvdHI+CiAgICAgICAgPHRyPgogICAgICAgICAgPHRkIGNsYXNzPSJyb2xlIj5UZWNobmljYWwgTGVhZDwvdGQ+CiAgICAgICAgICA8dGQgY2xhc3M9Im5hbWVzIj5OaXRpbiBDaGFuZG9sYTwvdGQ+CiAgICAgICAgICA8dGQ+PHNwYW4gY2xhc3M9Im5vLWNoYW5nZSI+Tm8gY2hhbmdlPC9zcGFuPjwvdGQ+CiAgICAgICAgPC90cj4KICAgICAgICA8dHIgc3R5bGU9ImJhY2tncm91bmQ6I2YwZmRmNCI+CiAgICAgICAgICA8dGQgY2xhc3M9InJvbGUiPkRlbGl2ZXJ5IExlYWRlciAoU1NBKTwvdGQ+CiAgICAgICAgICA8dGQgY2xhc3M9Im5hbWVzIj48ZW0gc3R5bGU9ImNvbG9yOiM5Y2EzYWYiPk5vdCBpbiBjdXJyZW50IHN0YXRlPC9lbT48L3RkPgogICAgICAgICAgPHRkPjxzcGFuIGNsYXNzPSJwaWxsIHBpbGwtbmV3Ij5OZXcgUm9sZSAmbWlkZG90OyA1MCU8L3NwYW4+PC90ZD4KICAgICAgICA8L3RyPgogICAgICAgIDx0ciBjbGFzcz0icm93LWdyb3VwLWRpdmlkZXIiPjx0ZCBjb2xzcGFuPSIzIj5TaGFyZWQgU2VydmljZXM8L3RkPjwvdHI+CiAgICAgICAgPHRyPgogICAgICAgICAgPHRkIGNsYXNzPSJyb2xlIj5PZmZzaG9yZSBCdWlsZCBQTTwvdGQ+CgogICAgICAgICAgPHRkIGNsYXNzPSJuYW1lcyI+TWFoZXMgVGhpcnVjaGVsdmFyYWo8L3RkPgogICAgICAgICAgPHRkPjxzcGFuIGNsYXNzPSJuYW1lLWFkZGVkIj5BbnViaGF2IEJhaXN3YXI8L3NwYW4+PGRpdiBjbGFzcz0iY2hhbmdlLW5vdGUiPkFudWJoYXYgbW92ZWQgZnJvbSBCb0IgU2NydW0gTGVhZGVyPC9kaXY+PC90ZD4KICAgICAgICA8L3RyPgogICAgICAgIDx0cj4KICAgICAgICAgIDx0ZCBjbGFzcz0icm9sZSI+UUEgTGVhZDwvdGQ+CiAgICAgICAgICA8dGQgY2xhc3M9Im5hbWVzIj48c3BhbiBjbGFzcz0ibmFtZS1yZW1vdmVkIj5OaXRpbiBQdXJpPC9zcGFuPjwvdGQ+CiAgICAgICAgICA8dGQ+PHNwYW4gY2xhc3M9InBpbGwgcGlsbC1yZW1vdmVkIj5SZW1vdmVkPC9zcGFuPjxkaXYgY2xhc3M9ImNoYW5nZS1ub3RlIj5NZWxvZHkgdGFrZXMgb3ZlciBRQSBMZWFkIGNvdmVyYWdlPC9kaXY+PC90ZD4KICAgICAgICA8L3RyPgogICAgICAgIDx0ciBjbGFzcz0icm93LWdyb3VwLWRpdmlkZXIiPjx0ZCBjb2xzcGFuPSIzIj5Qcm9kdWN0aW9uIFN1cHBvcnQ8L3RkPjwvdHI+CiAgICAgICAgPHRyPgogICAgICAgICAgPHRkIGNsYXNzPSJyb2xlIj5Qcm9kdWN0aW9uIFN1cHBvcnQgVGVjaCBMZWFkPC90ZD4KICAgICAgICAgIDx0ZCBjbGFzcz0ibmFtZXMiPkFhcm9uIE1pdGNoZWxsPC90ZD4KICAgICAgICAgIDx0ZD48c3BhbiBjbGFzcz0ibm8tY2hhbmdlIj5ObyBjaGFuZ2U8L3NwYW4+PGRpdiBjbGFzcz0iY2hhbmdlLW5vdGUiPkNvdmVycyBhbGwgd29ya3N0cmVhbXM8L2Rpdj48L3RkPgogICAgICAgIDwvdHI+CiAgICAgIDwvdGJvZHk+CiAgICA8L3RhYmxlPgogIDwvZGl2PgoKICA8IS0tIFRBQkxFIDI6IEJPT0sgT0YgQlVTSU5FU1MgLS0+CiAgPGRpdiBjbGFzcz0ic2VjdGlvbiI+CiAgICA8ZGl2IGNsYXNzPSJzZWN0aW9uLWhlYWRlciB3cy1ib2IiPkJvb2sgb2YgQnVzaW5lc3M8L2Rpdj4KICAgIDx0YWJsZT4KICAgICAgPHRoZWFkPgogICAgICAgIDx0cj4KICAgICAgICAgIDx0aCBzdHlsZT0id2lkdGg6MzAlIj5Sb2xlPC90aD4KICAgICAgICAgIDx0aCBzdHlsZT0id2lkdGg6MzQlIj5CZWZvcmU8L3RoPgogICAgICAgICAgPHRoPkFmdGVyPC90aD4KICAgICAgICA8L3RyPgogICAgICA8L3RoZWFkPgogICAgICA8dGJvZHk+CiAgICAgICAgPHRyIGNsYXNzPSJyb3ctZ3JvdXAtZGl2aWRlciI+PHRkIGNvbHNwYW49IjMiPlRlYW0gTGVhZGVyc2hpcDwvdGQ+PC90cj4KICAgICAgICA8dHI+CiAgICAgICAgICA8dGQgY2xhc3M9InJvbGUiPlNjcnVtIExlYWRlcjwvdGQ+CiAgICAgICAgICA8dGQgY2xhc3M9Im5hbWVzIj48c3BhbiBjbGFzcz0ibmFtZS1yZW1vdmVkIj5BbnViaGF2IEJhaXN3YXI8L3NwYW4+PC90ZD4KICAgICAgICAgIDx0ZD5NZXRsaWZlIHRvIGNvdmVyIHJvbGU8ZGl2IGNsYXNzPSJjaGFuZ2Utbm90ZSI+QW51Ymhhdg==
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MetLife — Sales + Service Centre C360 Transformation Extension</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; background: #f5f6fa; color: #1a1a2e; font-size: 14px; }
+  header { background: #1a1a2e; color: white; padding: 32px 40px; }
+  header h1 { font-size: 22px; font-weight: 700; letter-spacing: -0.3px; }
+  header p { margin-top: 6px; color: #8892b0; font-size: 13px; }
+  .badge { display: flex; align-items: center; gap: 8px; padding: 8px 16px; border-radius: 20px; font-size: 12px; font-weight: 600; }
+  .badge-removed { background: #fde8e8; color: #c0392b; }
+  .badge-replace { background: #fff3e0; color: #e65100; }
+  .badge-move { background: #e3f2fd; color: #1565c0; }
+  .badge-new { background: #e8f5e9; color: #2e7d32; }
+  .badge .dot { width: 8px; height: 8px; border-radius: 50%; background: currentColor; }
+  .container { padding: 28px 40px; display: flex; flex-direction: column; gap: 28px; }
+  .section { background: white; border-radius: 10px; overflow: hidden; box-shadow: 0 1px 4px rgba(0,0,0,.07); }
+  .section-header { background: #1a1a2e; color: white; padding: 12px 20px; font-size: 13px; font-weight: 700; letter-spacing: .5px; text-transform: uppercase; }
+  .section-header.ws-bob { background: #0f3460; }
+  .section-header.ws-sales { background: #1e4d8c; }
+  .section-header.ws-service { background: #2c6b9e; }
+  table { width: 100%; border-collapse: collapse; }
+  thead tr { background: #f0f2f8; }
+  thead th { padding: 10px 16px; text-align: left; font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: .6px; color: #6b7280; border-bottom: 2px solid #e8eaf0; }
+  tbody tr { border-bottom: 1px solid #f0f2f5; }
+  tbody tr:last-child { border-bottom: none; }
+  tbody tr:hover { background: #fafbff; }
+  td { padding: 11px 16px; vertical-align: top; line-height: 1.5; }
+  .role { font-weight: 600; color: #1a1a2e; }
+  .names { color: #374151; }
+  .name-removed { text-decoration: line-through; color: #9ca3af; }
+  .name-added { color: #2e7d32; font-weight: 600; }
+  .name-replaced { color: #e65100; font-style: italic; }
+  .no-change { color: #6b7280; font-size: 13px; }
+  .change-note { margin-top: 4px; font-size: 12px; color: #6b7280; font-style: italic; }
+  .pill { display: inline-flex; align-items: center; gap: 5px; font-size: 11px; font-weight: 600; padding: 3px 9px; border-radius: 12px; white-space: nowrap; }
+  .pill-removed { background: #fde8e8; color: #c0392b; }
+  .pill-replace { background: #fff3e0; color: #e65100; }
+  .pill-new { background: #e8f5e9; color: #2e7d32; }
+  .pill-refresh { background: #f3e8ff; color: #6b21a8; }
+  .pivots-wrapper { padding: 28px 40px 0; }
+  .pivots-section { background: white; border-radius: 10px; overflow: hidden; box-shadow: 0 1px 4px rgba(0,0,0,.07); margin-bottom: 28px; }
+  .roster-badges { display: flex; flex-wrap: wrap; gap: 10px; padding: 10px 40px 0; }
+  .pivots-body { padding: 8px 0; }
+  .pivot-group { border-bottom: 1px solid #f0f2f5; }
+  .pivot-group:last-child { border-bottom: none; }
+  .pivot-group-header { display: flex; align-items: center; gap: 12px; padding: 14px 24px 10px; }
+  .pivot-num { width: 26px; height: 26px; border-radius: 50%; background: #0f3460; color: white; font-size: 12px; font-weight: 700; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+  .pivot-group-title { font-size: 13px; font-weight: 700; color: #1a1a2e; }
+  .pivot-items { padding: 0 24px 14px 62px; display: flex; flex-direction: column; gap: 10px; }
+  .pivot-item { display: flex; gap: 10px; }
+  .pivot-dot { width: 6px; height: 6px; border-radius: 50%; background: #0f3460; margin-top: 7px; flex-shrink: 0; }
+  .pivot-content { font-size: 13px; color: #374151; line-height: 1.6; }
+  .pivot-content strong { color: #1a1a2e; }
+  .section-block { padding: 28px 40px 0; }
+  .section-marker { display: flex; align-items: center; gap: 14px; margin-bottom: 16px; }
+  .section-num { font-size: 10px; font-weight: 800; letter-spacing: 1.5px; text-transform: uppercase; color: white; background: #0f3460; padding: 4px 10px; border-radius: 4px; }
+  .section-title-label { font-size: 16px; font-weight: 700; color: #1a1a2e; }
+  .section-line { flex: 1; height: 2px; background: #e8eaf0; }
+  .pricing-card { background: white; border-radius: 10px; box-shadow: 0 1px 4px rgba(0,0,0,.07); overflow: hidden; }
+  .pricing-card-header { background: #0f3460; padding: 20px 28px; }
+  .pricing-card-header p { color: #8892b0; font-size: 12px; text-transform: uppercase; letter-spacing: .8px; font-weight: 600; margin-bottom: 4px; }
+  .pricing-card-header h3 { color: white; font-size: 13px; font-weight: 600; }
+  .pricing-stats { display: flex; }
+  .pricing-stat { flex: 1; padding: 28px 32px; border-right: 1px solid #f0f2f5; }
+  .pricing-stat:last-child { border-right: none; }
+  .pricing-stat-label { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: .7px; color: #9ca3af; margin-bottom: 8px; }
+  .pricing-stat-value { font-size: 32px; font-weight: 800; color: #1a1a2e; letter-spacing: -1px; line-height: 1; }
+  .pricing-stat-sub { font-size: 12px; color: #6b7280; margin-top: 6px; }
+  .row-group-divider td { background: #f7f8fc; padding: 6px 16px; font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: .6px; color: #9ca3af; border-top: 2px solid #e8eaf0; }
+</style>
+</head>
+<body>
+
+<header>
+  <h1>MetLife &#8212; Sales + Service Centre C360 Transformation Extension</h1>
+  <p>Salesforce Professional Services &middot; Proposal</p>
+</header>
+
+<!-- SECTION 01 -->
+<div class="section-block">
+  <div class="section-marker">
+    <span class="section-num">Section 01</span>
+    <span class="section-title-label">Key Operational &amp; Process Pivots to Drive Velocity, Quality, and Value</span>
+    <div class="section-line"></div>
+  </div>
+</div>
+<div class="pivots-wrapper" style="padding-top:0;">
+  <div class="pivots-section">
+    <div class="pivots-body">
+      <div class="pivot-group">
+        <div class="pivot-group-header">
+          <div class="pivot-num">1</div>
+          <div class="pivot-group-title">Leadership, Staffing &amp; Hands-On Architecture</div>
+        </div>
+        <div class="pivot-items">
+          <div class="pivot-item"><div class="pivot-dot"></div><div class="pivot-content"><strong>Hands-On Functional &amp; Business Architecture:</strong> Position Functional and Business Architects as active platform builders who configure directly in the sandbox, enabling real-time decision-making and removing administrative pass-through layers.</div></div>
+          <div class="pivot-item"><div class="pivot-dot"></div><div class="pivot-content"><strong>Dedicated Workstream Leadership:</strong> Align dedicated Senior Solution Leads across all workstreams (Pierre Dufour for Sales, Maria for Book of Business, and Nathan Greer for Servicing) to provide steady architectural direction and empower hands-on delivery.</div></div>
+          <div class="pivot-item"><div class="pivot-dot"></div><div class="pivot-content"><strong>Proactive Delivery Oversight:</strong> Introduce a Senior Manager (20 hpw) to streamline governance, accelerate blocker resolution, and optimize overall meeting cadences.</div></div>
+        </div>
+      </div>
+      <div class="pivot-group">
+        <div class="pivot-group-header">
+          <div class="pivot-num">2</div>
+          <div class="pivot-group-title">Delivery Process &amp; Ways of Working</div>
+        </div>
+        <div class="pivot-items">
+          <div class="pivot-item"><div class="pivot-dot"></div><div class="pivot-content"><strong>Collaborative AI Enablement for Speed:</strong> Partner directly with MetLife's AI technical staff to leverage enterprise AI tools (such as Claude and developer copilots) alongside Salesforce tools, driving immediate velocity in story drafting, rapid prototyping, and daily development.</div></div>
+          <div class="pivot-item"><div class="pivot-dot"></div><div class="pivot-content"><strong>Prototype-First Experience Design:</strong> Focus design cycles on working sandbox configurations rather than static wireframes, driving early &#8220;shift-left&#8221; feedback from end-users during active sprints.</div></div>
+          <div class="pivot-item"><div class="pivot-dot"></div><div class="pivot-content"><strong>Agile Governance &amp; Forward Refinement:</strong> Ensure a disciplined weekly backlog refinement rhythm for upcoming Program Increments (PIs) backed by clear governance&#8212;ensuring delivery cadences are consistently followed and risks or blockers are proactively raised well ahead of release dates.</div></div>
+          <div class="pivot-item"><div class="pivot-dot"></div><div class="pivot-content"><strong>Single Source of Truth in Azure DevOps (ADO):</strong> Standardize on ADO as the central hub for all user stories, acceptance criteria, and QA defects to eliminate duplicate tracking and reduce reporting friction.</div></div>
+        </div>
+      </div>
+      <div class="pivot-group">
+        <div class="pivot-group-header">
+          <div class="pivot-num">3</div>
+          <div class="pivot-group-title">Global Execution &amp; Performance Accountability</div>
+        </div>
+        <div class="pivot-items">
+          <div class="pivot-item"><div class="pivot-dot"></div><div class="pivot-content"><strong>Geographic Time-Zone Alignment:</strong> Shift target development capacity to Nearshore (LATAM / Mexico) or Onshore to foster real-time, working-hour collaboration and eliminate daily handoff lag.</div></div>
+          <div class="pivot-item"><div class="pivot-dot"></div><div class="pivot-content"><strong>Data-Driven Program &amp; Individual Metrics:</strong> Partner on 30-day joint leadership reviews to monitor both program-level health and individual developer KPIs (tracking story points per sprint, defect leakage, and rework), supporting our shared goal of a 5% PI-over-PI velocity improvement.</div></div>
+          <div class="pivot-item"><div class="pivot-dot"></div><div class="pivot-content"><strong>Ensure Balanced QA Support:</strong> Calibrate QA-to-developer ratios to ensure comprehensive testing coverage across Salesforce, MetLife internal, and TCS delivery streams.</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- SECTION 02 -->
+<div class="section-block">
+  <div class="section-marker">
+    <span class="section-num">Section 02</span>
+    <span class="section-title-label">Pricing</span>
+    <div class="section-line"></div>
+  </div>
+</div>
+<div class="container" style="padding-top:0;">
+  <div class="pricing-card">
+    <div class="pricing-card-header">
+      <p>MetLife &middot; C360 Transformation Extension</p>
+      <h3>Total Investment Summary</h3>
+    </div>
+    <div class="pricing-stats">
+      <div class="pricing-stat">
+        <div class="pricing-stat-label">Total Price</div>
+        <div class="pricing-stat-value">$10,577,611.20</div>
+        <div class="pricing-stat-sub">USD &middot; Fixed engagement fee</div>
+      </div>
+      <div class="pricing-stat">
+        <div class="pricing-stat-label">Engagement Duration</div>
+        <div class="pricing-stat-value">12 mo</div>
+        <div class="pricing-stat-sub">12-month program term</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- SECTION 03 -->
+<div class="section-block">
+  <div class="section-marker">
+    <span class="section-num">Section 03</span>
+    <span class="section-title-label">Team Roster: Before &amp; After</span>
+    <div class="section-line"></div>
+  </div>
+</div>
+<p style="padding: 8px 40px 0; font-size: 12px; color: #6b7280; font-style: italic;">Salesforce roles only &middot; Source: ART as of 9/21.</p>
+<div class="roster-badges">
+  <div class="badge badge-removed"><span class="dot"></span> 7 Positions Removed</div>
+  <div class="badge badge-replace"><span class="dot"></span> 4 SF Vendor Developers &#8594; Near/Onshore</div>
+  <div class="badge badge-move"><span class="dot"></span> 3 Role / Coverage Adjustments</div>
+  <div class="badge badge-new"><span class="dot"></span> 1 New Role Added</div>
+</div>
+
+<div class="container">
+
+  <!-- TABLE 1: ALL TEAMS SUPPORT -->
+  <div class="section">
+    <div class="section-header">All Teams Support</div>
+    <table>
+      <thead>
+        <tr>
+          <th style="width:30%">Role</th>
+          <th style="width:34%">Before</th>
+          <th>After</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr class="row-group-divider"><td colspan="3">SF Vendor Management &amp; Support</td></tr>
+        <tr>
+          <td class="role">Project Controller</td>
+          <td class="names"><span class="name-removed">Amanda Wang</span></td>
+          <td><span class="pill pill-removed">Removed</span><div class="change-note">Scope absorbed by Ben Wilkinson</div></td>
+        </tr>
+        <tr>
+          <td class="role">Senior Project Manager</td>
+          <td class="names">Ben Wilkinson</td>
+          <td><span class="no-change">No change</span><div class="change-note">Absorbs Amanda's scope</div></td>
+        </tr>
+        <tr>
+          <td class="role">Technical Lead</td>
+          <td class="names">Nitin Chandola</td>
+          <td><span class="no-change">No change</span></td>
+        </tr>
+        <tr style="background:#f0fdf4;">
+          <td class="role">Delivery Leader (SSA)</td>
+          <td class="names"><em style="color:#9ca3af;">Not in current state</em></td>
+          <td><span class="pill pill-new">New Role &middot; 50%</span></td>
+        </tr>
+        <tr class="row-group-divider"><td colspan="3">Shared Services</td></tr>
+        <tr>
+          <td class="role">Offshore Build PM</td>
+          <td class="names">Mahes Thiruchelvaraj</td>
+          <td><span class="name-added">Anubhav Baiswar</span><div class="change-note">Anubhav moved from BoB Scrum Leader</div></td>
+        </tr>
+        <tr>
+          <td class="role">QA Lead</td>
+          <td class="names"><span class="name-removed">Nitin Puri</span></td>
+          <td><span class="pill pill-removed">Removed</span><div class="change-note">Melody takes over QA Lead coverage</div></td>
+        </tr>
+        <tr class="row-group-divider"><td colspan="3">Production Support</td></tr>
+        <tr>
+          <td class="role">Production Support Tech Lead</td>
+          <td class="names">Aaron Mitchell</td>
+          <td><span class="no-change">No change</span><div class="change-note">Covers all workstreams</div></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- TABLE 2: BOOK OF BUSINESS -->
+  <div class="section">
+    <div class="section-header ws-bob">Book of Business</div>
+    <table>
+      <thead>
+        <tr>
+          <th style="width:30%">Role</th>
+          <th style="width:34%">Before</th>
+          <th>After</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr class="row-group-divider"><td colspan="3">Team Leadership</td></tr>
+        <tr>
+          <td class="role">Scrum Leader</td>
+          <td class="names"><span class="name-removed">Anubhav Baiswar</span></td>
+          <td>Metlife to cover role<div class="change-note">Anubhav moved to Shared Services as Offshore Build PM</div></td>
+        </tr>
+        <tr class="row-group-divider"><td colspan="3">Solution &amp; Design</td></tr>
+        <tr>
+          <td class="role">Solution Lead</td>
+          <td class="names">Maria Hernandez Mendoza</td>
+          <td><span class="no-change">No change</span></td>
+        </tr>
+        <tr>
+          <td class="role">Offshore Technical Architect</td>
+          <td class="names">Meenal Retharekar</td>
+          <td><span class="no-change">No change</span></td>
+        </tr>
+        <tr>
+          <td class="role">Technical Lead</td>
+          <td class="names"><span class="name-replaced">Sai Sadrup Reddy Gangula</span></td>
+          <td><span class="pill pill-refresh">Refresh / Replace</span><div class="change-note">Replace Now</div></td>
+        </tr>
+        <tr>
+          <td class="role">Functional Design / BA</td>
+          <td class="names">Robin Morris<br><span class="name-removed">Upasana Dass</span></td>
+          <td>Robin Morris &#10003;<br><span class="pill pill-removed" style="margin-top:4px; display:inline-flex;">Upasana Dass — Removed</span></td>
+        </tr>
+        <tr>
+          <td class="role">UX Designer</td>
+          <td class="names"><span class="name-removed">Brandon Wilson</span></td>
+          <td><span class="pill pill-removed">Removed</span></td>
+        </tr>
+        <tr class="row-group-divider"><td colspan="3">Developers (SF Vendor)</td></tr>
+        <tr>
+          <td class="role">Developer</td>
+          <td class="names"><span class="name-replaced">Nitin Dwivedi</span></td>
+          <td><span class="pill pill-replace">Replace &#8594; Near/Onshore</span></td>
+        </tr>
+        <tr>
+          <td class="role">Developer</td>
+          <td class="names">Gaurav Singh</td>
+          <td><span class="no-change">No change</span></td>
+        </tr>
+        <tr>
+          <td class="role">Developer</td>
+          <td class="names"><span class="name-replaced">Tarushi Goyal</span></td>
+          <td><span class="pill pill-replace">Replace &#8594; Near/Onshore</span><div class="change-note">Replace Now</div></td>
+        </tr>
+        <tr>
+          <td class="role">Developer</td>
+          <td class="names">Han Aung</td>
+          <td><span class="no-change">No change</span></td>
+        </tr>
+        <tr class="row-group-divider"><td colspan="3">QA / Story Level Testers (SF Vendor)</td></tr>
+        <tr>
+          <td class="role">Story Level Tester</td>
+          <td class="names">Vinod Kumar Dakkumalla</td>
+          <td><span class="no-change">No change</span></td>
+        </tr>
+        <tr>
+          <td class="role">Story Level Tester</td>
+          <td class="names">Marquese Martin-Hayes</td>
+          <td><span class="no-change">No change</span></td>
+        </tr>
+        <tr>
+          <td class="role">Story Level Tester</td>
+          <td class="names">Smitali Das</td>
+          <td><span class="no-change">No change</span></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- TABLE 3: SALES 360 -->
+  <div class="section">
+    <div class="section-header ws-sales">Sales 360</div>
+    <table>
+      <thead>
+        <tr>
+          <th style="width:30%">Role</th>
+          <th style="width:34%">Before</th>
+          <th>After</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr class="row-group-divider"><td colspan="3">Solution &amp; Design</td></tr>
+        <tr>
+          <td class="role">Senior Solution Architect</td>
+          <td class="names">Pierre DuFour</td>
+          <td><span class="no-change">No change</span></td>
+        </tr>
+        <tr>
+          <td class="role">Offshore Technical Architect</td>
+          <td class="names">Meenal Retharekar</td>
+          <td><span class="no-change">No change</span></td>
+        </tr>
+        <tr>
+          <td class="role">Technical Lead</td>
+          <td class="names">Srinivas Medicherla</td>
+          <td><span class="no-change">No change</span></td>
+        </tr>
+        <tr>
+          <td class="role">Functional Design / BA</td>
+          <td class="names">Lyle Marecheau</td>
+          <td><span class="no-change">No change</span></td>
+        </tr>
+        <tr>
+          <td class="role">UX Designer</td>
+          <td class="names">Varun Mehra</td>
+          <td><span class="no-change">No change</span></td>
+        </tr>
+        <tr class="row-group-divider"><td colspan="3">Developers (SF Vendor)</td></tr>
+        <tr>
+          <td class="role">Developer</td>
+          <td class="names">Kapil Shirodkar</td>
+          <td><span class="no-change">No change</span></td>
+        </tr>
+        <tr>
+          <td class="role">Developer</td>
+          <td class="names"><span class="name-replaced">Pallavi Tyagi</span></td>
+          <td><span class="pill pill-replace">Replace &#8594; Near/Onshore</span></td>
+        </tr>
+        <tr>
+          <td class="role">Developer</td>
+          <td class="names">Rupesh Patil</td>
+          <td><span class="no-change">No change</span></td>
+        </tr>
+        <tr class="row-group-divider"><td colspan="3">QA / Story Level Testers (SF Vendor)</td></tr>
+        <tr>
+          <td class="role">Story Level Tester</td>
+          <td class="names">Ranjitha Ravikumar</td>
+          <td><span class="no-change">No change</span></td>
+        </tr>
+        <tr>
+          <td class="role">Story Level Tester</td>
+          <td class="names">Ashu Gupta</td>
+          <td><span class="no-change">No change</span></td>
+        </tr>
+        <tr>
+          <td class="role">Story Level Tester</td>
+          <td class="names">Melodie Piercey</td>
+          <td><span class="no-change">No change</span></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- TABLE 4: SERVICE 360 & SERVICE BAU -->
+  <div class="section">
+    <div class="section-header ws-service">Service 360 &amp; Service BAU</div>
+    <table>
+      <thead>
+        <tr>
+          <th style="width:30%">Role</th>
+          <th style="width:34%">Before</th>
+          <th>After</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr class="row-group-divider"><td colspan="3">Solution &amp; Design</td></tr>
+        <tr>
+          <td class="role">Solution Lead</td>
+          <td class="names">Nathan Greer</td>
+          <td><span class="no-change">No change</span></td>
+        </tr>
+        <tr>
+          <td class="role">Offshore Technical Architect</td>
+          <td class="names"><span class="name-removed">Hemangini Vashishtha</span></td>
+          <td><span class="pill pill-removed">Removed</span><div class="change-note">Meenal Retharekar now covers all 3 workstreams</div></td>
+        </tr>
+        <tr>
+          <td class="role">Technical Lead</td>
+          <td class="names">Prasad Alavilli</td>
+          <td><span class="no-change">No change</span></td>
+        </tr>
+        <tr>
+          <td class="role">Functional Design / BA</td>
+          <td class="names">Prabha Ramaswamy Shanthamani<br><span class="name-removed">Misael Ramirez</span></td>
+          <td>Prabha Ramaswamy Shanthamani &#10003;<br><span class="pill pill-removed" style="margin-top:4px; display:inline-flex;">Misael Ramirez — Removed</span></td>
+        </tr>
+        <tr>
+          <td class="role">UX Designer</td>
+          <td class="names"><span class="name-removed">Matthew Huggins</span></td>
+          <td><span class="pill pill-removed">Removed</span></td>
+        </tr>
+        <tr class="row-group-divider"><td colspan="3">Developers (SF Vendor)</td></tr>
+        <tr>
+          <td class="role">Developer</td>
+          <td class="names"><span class="name-replaced">Alok Singh</span></td>
+          <td><span class="pill pill-replace">Replace &#8594; Near/Onshore</span></td>
+        </tr>
+        <tr>
+          <td class="role">Developer</td>
+          <td class="names">Shubham Tunkikar</td>
+          <td><span class="no-change">No change</span></td>
+        </tr>
+        <tr>
+          <td class="role">Developer</td>
+          <td class="names">Subhendu Verma</td>
+          <td><span class="no-change">No change</span></td>
+        </tr>
+        <tr>
+          <td class="role">Developer</td>
+          <td class="names">Lenny Sterle</td>
+          <td><span class="no-change">No change</span></td>
+        </tr>
+        <tr class="row-group-divider"><td colspan="3">QA / Story Level Testers (SF Vendor)</td></tr>
+        <tr>
+          <td class="role">Story Level Tester</td>
+          <td class="names">Lavni Agarwal</td>
+          <td><span class="no-change">No change</span></td>
+        </tr>
+        <tr>
+          <td class="role">Story Level Tester</td>
+          <td class="names">Vinay K P</td>
+          <td><span class="no-change">No change</span></td>
+        </tr>
+        <tr>
+          <td class="role">Story Level Tester</td>
+          <td class="names">Rahul Jiyani</td>
+          <td><span class="no-change">No change</span></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+</div>
+</body>
+</html>
